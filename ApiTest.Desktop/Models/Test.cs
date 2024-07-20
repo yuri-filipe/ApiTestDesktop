@@ -5,7 +5,7 @@ namespace ApiTest.Domain.Data.Models
     public class Test
     {
         [BsonId]
-        public int Id { get; set; }
+        public ObjectId Id { get; set; } = ObjectId.NewObjectId();
 
         [BsonRef("Configurations")]
         public int ConfigurationId { get; set; }

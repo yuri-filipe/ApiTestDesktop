@@ -1,7 +1,10 @@
-﻿using ApiTest.Desktop.Services;
-using ApiTest.Domain.Data.Models;
+﻿using System;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using ApiTest.Desktop.Services;
+using ApiTest.Domain.Data.Models;
+using LiteDB;
 
 namespace ApiTest.Desktop.ViewModels
 {
@@ -28,7 +31,8 @@ namespace ApiTest.Desktop.ViewModels
             Tests = new ObservableCollection<Test>(_dbService.GetTests());
             NewTest = new Test
             {
-                Date = DateTime.Now
+                Date = DateTime.Now,
+                Id = ObjectId.NewObjectId() // Ensure new ID is generated
             };
 
             AddTestCommand = new RelayCommand(async () => await AddTestAsync());
@@ -38,7 +42,6 @@ namespace ApiTest.Desktop.ViewModels
         {
             if (NewTest != null)
             {
-                NewTest.Id = Tests.Count + 1; // Simplified ID assignment
                 _dbService.AddTest(NewTest);
 
                 Tests.Add(new Test
@@ -53,7 +56,8 @@ namespace ApiTest.Desktop.ViewModels
                 // Clear the new test entry form
                 NewTest = new Test
                 {
-                    Date = DateTime.Now
+                    Date = DateTime.Now,
+                    Id = ObjectId.NewObjectId() // Ensure new ID is generated
                 };
 
                 OnPropertyChanged(nameof(NewTest));

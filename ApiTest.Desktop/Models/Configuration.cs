@@ -5,7 +5,7 @@ namespace ApiTest.Domain.Data.Models
     public class Configuration
     {
         [BsonId]
-        public int Id { get; set; }
+        public ObjectId Id { get; set; } = ObjectId.NewObjectId();
         public string Url { get; set; }
         public string Method { get; set; } // GET, POST, PUT, DELETE, etc.
         public string Body { get; set; }

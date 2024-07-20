@@ -14,9 +14,9 @@ namespace ApiTest.Infrastructure.Services
             _testRepository = testRepository;
         }
 
-        public async Task<IEnumerable<Configuration>> GetAllConfigurationsAsync()
+        public async Task<IEnumerable<Configuration>> GetAllConfigurationAsync()
         {
-            return await _testRepository.GetAllConfigurationsAsync();
+            return await _testRepository.GetAllConfigurationAsync();
         }
 
         public async Task<Configuration> GetConfigurationByIdAsync(int id)
@@ -39,9 +39,9 @@ namespace ApiTest.Infrastructure.Services
             await _testRepository.DeleteConfigurationAsync(id);
         }
 
-        public async Task<IEnumerable<Test>> GetAllTestsAsync()
+        public async Task<IEnumerable<Test>> GetAllTestAsync()
         {
-            return await _testRepository.GetAllTestsAsync();
+            return await _testRepository.GetAllTestAsync();
         }
 
         public async Task<Test> GetTestByIdAsync(int id)

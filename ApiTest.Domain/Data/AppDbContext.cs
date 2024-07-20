@@ -6,10 +6,10 @@ namespace ApiTest.Domain.Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Configuration> Configurations { get; set; }
-        public DbSet<Parameter> Parameters { get; set; }
-        public DbSet<Header> Headers { get; set; }
-        public DbSet<Test> Tests { get; set; }
+        public DbSet<Configuration> Configuration { get; set; }
+        public DbSet<Parameter> Parameter { get; set; }
+        public DbSet<Header> Header { get; set; }
+        public DbSet<Test> Test { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 

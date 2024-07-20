@@ -4,19 +4,19 @@ namespace ApiTest.Domain.Repositories
 {
     public interface ITestRepository
     {
-        Task<IEnumerable<Parameter>> GetAllParametersAsync();
+        Task<IEnumerable<Parameter>> GetAllParameterAsync();
         Task<Parameter> GetParameterByIdAsync(int id);
         Task AddParameterAsync(Parameter parameter);
         Task UpdateParameterAsync(Parameter parameter);
         Task DeleteParameterAsync(int id);
 
-        Task<IEnumerable<Configuration>> GetAllConfigurationsAsync();
+        Task<IEnumerable<Configuration>> GetAllConfigurationAsync();
         Task<Configuration> GetConfigurationByIdAsync(int id);
         Task AddConfigurationAsync(Configuration configuration);
         Task UpdateConfigurationAsync(Configuration configuration);
         Task DeleteConfigurationAsync(int id);
 
-        Task<IEnumerable<Test>> GetAllTestsAsync();
+        Task<IEnumerable<Test>> GetAllTestAsync();
         Task<Test> GetTestByIdAsync(int id);
         Task AddTestAsync(Test test);
         Task UpdateTestAsync(Test test);

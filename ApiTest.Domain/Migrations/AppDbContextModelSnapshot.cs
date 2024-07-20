@@ -37,7 +37,7 @@ namespace ApiTest.Domain.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Configurations");
+                    b.ToTable("Configuration");
                 });
 
             modelBuilder.Entity("ApiTest.Domain.Data.Models.Header", b =>
@@ -61,7 +61,7 @@ namespace ApiTest.Domain.Migrations
 
                     b.HasIndex("ConfigurationId");
 
-                    b.ToTable("Headers");
+                    b.ToTable("Header");
                 });
 
             modelBuilder.Entity("ApiTest.Domain.Data.Models.Parameter", b =>
@@ -85,7 +85,7 @@ namespace ApiTest.Domain.Migrations
 
                     b.HasIndex("ConfigurationId");
 
-                    b.ToTable("Parameters");
+                    b.ToTable("Parameter");
                 });
 
             modelBuilder.Entity("ApiTest.Domain.Data.Models.Test", b =>
@@ -112,7 +112,7 @@ namespace ApiTest.Domain.Migrations
 
                     b.HasIndex("ConfigurationId");
 
-                    b.ToTable("Tests");
+                    b.ToTable("Test");
                 });
 
             modelBuilder.Entity("ApiTest.Domain.Data.Models.Header", b =>

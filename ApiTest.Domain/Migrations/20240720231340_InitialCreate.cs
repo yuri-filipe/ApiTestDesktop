@@ -12,7 +12,7 @@ namespace ApiTest.Domain.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Configurations",
+                name: "Configuration",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -23,11 +23,11 @@ namespace ApiTest.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Configurations", x => x.Id);
+                    table.PrimaryKey("PK_Configuration", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Headers",
+                name: "Header",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -38,17 +38,17 @@ namespace ApiTest.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Headers", x => x.Id);
+                    table.PrimaryKey("PK_Header", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Headers_Configurations_ConfigurationId",
+                        name: "FK_Header_Configuration_ConfigurationId",
                         column: x => x.ConfigurationId,
-                        principalTable: "Configurations",
+                        principalTable: "Configuration",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Parameters",
+                name: "Parameter",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -59,17 +59,17 @@ namespace ApiTest.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Parameters", x => x.Id);
+                    table.PrimaryKey("PK_Parameter", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Parameters_Configurations_ConfigurationId",
+                        name: "FK_Parameter_Configuration_ConfigurationId",
                         column: x => x.ConfigurationId,
-                        principalTable: "Configurations",
+                        principalTable: "Configuration",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tests",
+                name: "Test",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
@@ -81,28 +81,28 @@ namespace ApiTest.Domain.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tests", x => x.Id);
+                    table.PrimaryKey("PK_Test", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tests_Configurations_ConfigurationId",
+                        name: "FK_Test_Configuration_ConfigurationId",
                         column: x => x.ConfigurationId,
-                        principalTable: "Configurations",
+                        principalTable: "Configuration",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Headers_ConfigurationId",
-                table: "Headers",
+                name: "IX_Header_ConfigurationId",
+                table: "Header",
                 column: "ConfigurationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Parameters_ConfigurationId",
-                table: "Parameters",
+                name: "IX_Parameter_ConfigurationId",
+                table: "Parameter",
                 column: "ConfigurationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tests_ConfigurationId",
-                table: "Tests",
+                name: "IX_Test_ConfigurationId",
+                table: "Test",
                 column: "ConfigurationId");
         }
 
@@ -110,16 +110,16 @@ namespace ApiTest.Domain.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Headers");
+                name: "Header");
 
             migrationBuilder.DropTable(
-                name: "Parameters");
+                name: "Parameter");
 
             migrationBuilder.DropTable(
-                name: "Tests");
+                name: "Test");
 
             migrationBuilder.DropTable(
-                name: "Configurations");
+                name: "Configuration");
         }
     }
 }

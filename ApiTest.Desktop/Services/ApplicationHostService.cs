@@ -1,6 +1,4 @@
-﻿using ApiTest.Desktop.Views.Pages;
-using ApiTest.Desktop.Views.Windows;
-using Microsoft.Extensions.DependencyInjection;
+﻿using ApiTest.Desktop.Views.Windows;
 using Microsoft.Extensions.Hosting;
 using Wpf.Ui;
 

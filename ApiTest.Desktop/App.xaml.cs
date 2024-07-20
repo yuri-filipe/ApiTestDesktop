@@ -4,16 +4,8 @@ using ApiTest.Desktop.ViewModels.Pages;
 using ApiTest.Desktop.ViewModels.Windows;
 using ApiTest.Desktop.Views.Pages;
 using ApiTest.Desktop.Views.Windows;
-using ApiTest.Domain.Data;
-using ApiTest.Domain.Repositories;
-using ApiTest.Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.IO;
-using System.Reflection;
-using System.Windows;
 using System.Windows.Threading;
 using Wpf.Ui;
 
@@ -23,11 +15,6 @@ namespace ApiTest.Desktop
     {
         private static readonly IHost _host = Host
             .CreateDefaultBuilder()
-            .ConfigureAppConfiguration((context, config) =>
-            {
-                config.SetBasePath(Path.GetDirectoryName(Assembly.GetEntryAssembly()!.Location));
-                config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-            })
             .ConfigureServices((context, services) =>
             {
                 services.AddHostedService<ApplicationHostService>();
@@ -57,12 +44,8 @@ namespace ApiTest.Desktop
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
 
-                services.AddSingleton<ITestService, TestService>();
-                services.AddSingleton<ITestRepository, TestRepository>();
-
-                services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlite(context.Configuration.GetConnectionString("DefaultConnection")));
-
+                // LiteDB service
+                services.AddSingleton(new LiteDbCacheService("filename=cacheData.db;mode=shared"));
             })
             .Build();
 

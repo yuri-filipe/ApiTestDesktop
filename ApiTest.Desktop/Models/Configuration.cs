@@ -1,5 +1,4 @@
 ﻿using LiteDB;
-using System.Collections.Generic;
 
 namespace ApiTest.Domain.Data.Models
 {

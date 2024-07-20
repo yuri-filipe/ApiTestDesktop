@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="LiteDB" Version="5.0.21" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,11 +28,6 @@
   <ItemGroup>
     <None Remove="Assets\wpfui-icon-256.png" />
     <None Remove="Assets\wpfui-icon-1024.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ApiTest.Domain\ApiTest.Domain.csproj" />
-    <ProjectReference Include="..\ApiTest.Infrastructure\ApiTest.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

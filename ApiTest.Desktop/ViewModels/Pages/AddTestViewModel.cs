@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using ApiTest.Desktop.Services;
 using ApiTest.Domain.Data.Models;
-using ApiTest.Infrastructure.Services;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace ApiTest.Desktop.ViewModels
 {
     public class AddTestPageViewModel : ViewModelBase
     {
-        private readonly ITestService _testService;
+        private readonly LiteDbCacheService _dbService;
         private Test _newTest;
 
         public ObservableCollection<Test> Tests { get; set; }
@@ -24,10 +22,10 @@ namespace ApiTest.Desktop.ViewModels
         }
         public ICommand AddTestCommand { get; }
 
-        public AddTestPageViewModel(ITestService testService)
+        public AddTestPageViewModel(LiteDbCacheService dbService)
         {
-            _testService = testService;
-            Tests = new ObservableCollection<Test>();
+            _dbService = dbService;
+            Tests = new ObservableCollection<Test>(_dbService.GetTests());
             NewTest = new Test
             {
                 Date = DateTime.Now
@@ -40,13 +38,13 @@ namespace ApiTest.Desktop.ViewModels
         {
             if (NewTest != null)
             {
-                await _testService.AddTestAsync(NewTest);
+                NewTest.Id = Tests.Count + 1; // Simplified ID assignment
+                _dbService.AddTest(NewTest);
 
                 Tests.Add(new Test
                 {
                     Id = NewTest.Id,
                     ConfigurationId = NewTest.ConfigurationId,
-                    Configuration = NewTest.Configuration,
                     Date = NewTest.Date,
                     Result = NewTest.Result,
                     ErrorMessage = NewTest.ErrorMessage
